@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>{% block title %}Taskbook{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}{% endblock %}
+
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css" />
+</head>
+
+<body id="{% block body_id %}{% endblock %}">
+
+    <div id="wrapper" class="animate">
+        <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ path('homepage') }}">TASKBOOK</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+
+                <ul class="navbar-nav ml-md-auto d-md-flex">
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_task_index') }}">Редактировать задачи</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ path('security_logout') }}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ path('security_login', {'redirect_to': app.request.pathInfo}) }}">Login</a>
+                    </li>
+                {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+
+            {% block body %}
+                {% block main %}{% endblock %}
+            {% endblock %}
+
+        </div>
+    </div>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+</body>
+</html>

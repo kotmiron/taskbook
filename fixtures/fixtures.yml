@@ -1,0 +1,56 @@
+App\Entity\User:
+    user1:
+        username: admin
+        roles: ['ROLE_ADMIN']
+        email: '<email()>'
+        fullname: '<firstName()> <lastName()>'
+        password: <myEncodePassword('123')>
+    user2:
+        username: '<username()>'
+        roles: ['ROLE_USER']
+        email: '<email()>'
+        fullname: '<firstName()> <lastName()>'
+        password: <myEncodePassword('456')>
+    user3:
+        username: '<username()>'
+        roles: ['ROLE_USER']
+        email: '<email()>'
+        fullname: '<firstName()> <lastName()>'
+        password: <myEncodePassword('54645644')>
+
+
+App\Entity\Task:
+    task1:
+        user: '@user1'
+        content: Провести планерку для менеджеров
+    task2:
+        user: '@user1'
+        content: Согласовать план отпусков
+    task3:
+        user: '@user2'
+        content: Запросить в бухгалтерии данные по поступившим оплатам
+    task4:
+        user: '@user1'
+        content: Отправить презентацию по итогам года Иванову
+    task5:
+        user: '@user3'
+        content: Посмотреть договор с компанией А
+    task6:
+        user: '@user3'
+        content: Провести собеседование с кандидатом на должность менеджера
+    task7:
+        user: '@user2'
+        content: Согласовать макет визиток и бейджей
+    task8:
+        user: '@user2'
+        content: Доделать бюджет продаж на следующий месяц
+    task9:
+        user: '@user2'
+        content: Посмотреть статистику по сделкам менеджеров за неделю
+    task10:
+        user: '@user1'
+        content: Отправить еженедельный отчет по подготовке релиза ААА
+    task11:
+        user: '@user3'
+        content: Созвониться с А.А. по поводу требований к продукту АА
+

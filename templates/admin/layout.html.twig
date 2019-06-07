@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header_navigation_links %}
+    <li>
+        <a href="{{ path('admin_task_index') }}">
+            <i class="fa fa-list-alt" aria-hidden="true"></i> Список задач
+        </a>
+    </li>
+
+{% endblock %}

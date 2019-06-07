@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'task_index' %}
+
+{% block main %}
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Список задач</h5>
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Исполнитель <a href="{{ path('task_index', {'sort': 'name'}) }}" style="padding-left: 10px"><i class="fas fa-sort-down"></i></a></th>
+                    <th scope="col">Email <a href="{{ path('task_index', {'sort': 'email'}) }}" style="padding-left: 10px"><i class="fas fa-sort-down"></i></a></th>
+                    <th scope="col">Текст</th>
+                    <th scope="col">Статус <a href="{{ path('task_index', {'sort': 'status'}) }}" style="padding-left: 10px"><i class="fas fa-sort-down"></i></a></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+            {% set i = tasks.getCurrentPageOffsetStart %}
+            {% for task in tasks %}
+                <tr>
+                    <th scope="row">{{ i }}</th>
+                    <td>{{ task.user.username }}</td>
+                    <td>{{ task.user.email }}</td>
+                    <td>{{ task.content|nl2br }}</td>
+                    <td style="width:10%">
+                    {% if (task.status) %}
+                        <i class="far fa-check-square fa-2x" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="far fa-square fa-2x" aria-hidden="true"></i>
+                    {% endif %}
+                    </td>
+                </tr>
+                {% set i = i + 1 %}
+            {% else %}
+                <tr>
+                    <td colspan="4" align="center">Ни одной записи не найдено</td>
+                </tr>
+            {% endfor %}
+
+                </tbody>
+                </table>
+
+                <div class="clearfix"></div>
+
+                {% if tasks.haveToPaginate %}
+                <div class="navigation text-center">
+                {{ pagerfanta(tasks, 'twitter_bootstrap4', {routeName: 'task_index', routeParams: app.request.query.all}) }}
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Добавить задачу</h5>
+
+                {{ include('_form.html.twig') }}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

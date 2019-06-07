@@ -1,0 +1,14 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_task_edit' %}
+
+{% block main %}
+    <h1>Изменить запись</h1>
+
+    {{ include('admin/task/_form.html.twig', {
+        form: form,
+        button_label: 'Сохранить изменения',
+        include_back_to_home_link: true,
+    }, with_context = false) }}
+{% endblock %}
+

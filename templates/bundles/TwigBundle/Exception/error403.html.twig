@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-danger">Ошибка 403</h1>
+
+    <p class="lead">Доступ запрещен!</p>
+    <p>У Вас нет прав для просмотра этой страницы</p>
+
+    <p><a href="{{ path('homepage') }}">Перейти к главной странице сайта</a></p>
+
+
+{% endblock %}
