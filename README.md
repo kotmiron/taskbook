@@ -1,20 +1,24 @@
-#Taskbook Приложение-задачник
+# Taskbook Приложение-задачник
 -----------
 
-1) База данных
+### База данных
+
 Используется PostgreSQL.
 
-2) Дополнительные бандлы:
-    white-october/pagerfanta-bundle
-    hautelook/alice-bundle
+### Дополнительные бандлы:
 
-3) Создание таблиц
-    bin/console doctrine:schema:update --force
+white-october/pagerfanta-bundle
+hautelook/alice-bundle
 
-4) Наполнение фейковым содержимым из фикстур
-    php bin/console hautelook:fixtures:load
+### Создание таблиц
 
-5) Административная часть
+bin/console doctrine:schema:update --force
 
-    Логин:  admin
-    Пароль: 123
+### Наполнение фейковым содержимым из фикстур
+
+php bin/console hautelook:fixtures:load
+
+### Административная часть
+
+- Username: `admin`
+- Password: `123`
